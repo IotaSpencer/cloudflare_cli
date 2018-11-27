@@ -1,2 +1,4 @@
 #!/usr/bin/env ruby
 require 'cloudflare_cli'
+
+CloudflareCli::App.run(ARGV)
