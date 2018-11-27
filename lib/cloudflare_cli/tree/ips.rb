@@ -1,11 +1,17 @@
-require 'httparty'
+require 'rubyflare'
 
 module CloudflareCli
-  module APITree
+  module Tree
     class IPs
-      include HTTParty
-      base_uri 'https://api.cloudflare.com/client/v4/'
-
+      def initialize(email = nil, api_key = nil)
+        @email = email
+        @api_key = api_key
+      end
+      # Return Cloudflare IP CIDRs
+      def get
+        connection = Rubyflare.connect_with(@email, @api_key)
+        connection.get('ips')
+      end
     end
   end
 end
