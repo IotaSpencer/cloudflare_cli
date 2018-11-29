@@ -1,16 +1,14 @@
-require 'rubyflare'
+require "rubyflare"
 
 module CloudflareCli
-  module Tree
+  module Endpoints
     class IPs
-      def initialize(email = nil, api_key = nil)
-        @email = email
-        @api_key = api_key
-      end
-      # Return Cloudflare IP CIDRs
-      def get
-        connection = Rubyflare.connect_with(@email, @api_key)
-        connection.get('ips')
+      def self.list
+
+        ctx = CloudflareCli::State.ctx
+        ctx.get('ips')
+      rescue Rubyflare::ConnectionError => e
+        #  puts e.response.body
       end
     end
   end
