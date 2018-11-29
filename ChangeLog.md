@@ -1,5 +1,9 @@
 2018-11-28  Ken Spencer <me@iotaspencer.me>
 
+	* ChangeLog: upload ChangeLog
+
+2018-11-28  Ken Spencer <me@iotaspencer.me>
+
 	* lib/cloudflare_cli/version.rb: Bump cloudflare_cli to 0.0.2
 
 2018-11-28  Ken Spencer <me@iotaspencer.me>
@@ -88,3 +92,4 @@
 2018-11-26  Ken Spencer <me@iotaspencer.me>
 
 	* Initial Commit
+
