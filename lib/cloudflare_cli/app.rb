@@ -1,11 +1,20 @@
 require "gli"
+require "json"
 require "cloudflare_cli/tree"
 
 module CloudflareCli
   class App
     extend GLI::App
+    program_desc "Interface with the Cloudflare API!"
 
-    program_desc "Describe your application here"
+    program_long_desc <<~HEREDOC
+
+                        #{exe_name} is an interface into the Cloudflare API,
+    usage is rate-limited by Cloudflare itself, not the gem.
+
+    See https://api.cloudflare.com/#getting-started-requests for information
+    on the API and the linked anchor for rate-limiting specifically.
+                      HEREDOC
 
     version CloudflareCli::VERSION
 
@@ -61,12 +70,19 @@ module CloudflareCli
       end
     end
 
-    desc "Describe zones here"
-    arg_name "Describe arguments to zones here"
+    desc "Use the '/zones/*' endpoints"
     command :zones do |c|
-      c.action do |global_options, options, args|
-        puts "zones command ran"
+      c.desc "list all zones or filter them"
+      c.command [:all, "list-zones"] do |lz|
+        lz.example "#{exe_name} zones [list-zones|all]", desc: "List all zones without filtering them"
+        lz.flag [:name], desc: "Zone name to search for"
+        lz.action do |global_options, options, args|
+          puts CloudflareCli::Endpoints::Zones.all(options)
+        end
       end
+      c.action do |global_options, options, args|
+      end
+      c.default_command false
     end
 
     desc "Describe dns here"
@@ -87,8 +103,16 @@ module CloudflareCli
 
     desc "Return Cloudflare IPs"
     command :ips do |c|
-      c.action do |global_options, options, args|
-        puts CloudflareCli::Tree::IPs.new(global_options['email'], global_options['api-key']).get
+      c.command :list do |li|
+        li.switch [:pretty, :p], desc: "make the display of the ips pretty", negatable: false
+
+        li.action do |global_options, options, args|
+          if options[:pretty]
+            pp CloudflareCli::Endpoints::IPs.list.body
+          else
+            puts CloudflareCli::Endpoints::IPs.list.body
+          end
+        end
       end
     end
 
@@ -99,15 +123,18 @@ module CloudflareCli
         puts "ssl command ran"
       end
     end
-    #
-    # pre do |global,command,options,args|
-    #   # Pre logic here
-    #   # Return true to proceed; false to abort and not call the
-    #   # chosen command
-    #   # Use skips_pre before a command to skip this block
-    #   # on that command only
-    #   true
-    # end
+    around do |global_options, command, options, arguments, code|
+      CloudflareCli::State.initiate(global_options)
+      code.call
+    end
+    pre do |global, command, options, args|
+      # Pre logic here
+      # Return true to proceed; false to abort and not call the
+      # chosen command
+      # Use skips_pre before a command to skip this block
+      #  on that command only
+      true
+    end
     #
     # post do |global,command,options,args|
     #   # Post logic here
