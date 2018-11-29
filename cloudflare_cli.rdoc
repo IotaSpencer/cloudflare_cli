@@ -1,5 +1,98 @@
-= cloudflare_cli
+== cloudflare_cli - Interface with the Cloudflare API!
 
-Generate this with
-    cloudflare_cli _doc
-After you have described your command line interface
+
+                    cloudflare_cli is an interface into the Cloudflare API,
+usage is rate-limited by Cloudflare itself, not the gem.
+
+See https://api.cloudflare.com/#getting-started-requests for information
+on the API and the linked anchor for rate-limiting specifically.
+
+v0.0.3
+
+=== Global Options
+=== --api-key APIKEY
+
+Cloudflare API Key
+
+[Default Value] ********
+
+
+=== --email EMAIL
+
+Cloudflare E-Mail
+
+[Default Value] ********
+
+
+=== --help
+Show this message
+
+
+
+=== --version
+Display the program version
+
+
+
+=== Commands
+==== Command: <tt>dns-record </tt>
+DNS Record Management
+
+
+===== Commands
+====== Command: <tt>add </tt>
+add a record
+
+
+====== Command: <tt>rem|del|delete </tt>
+remove a record
+
+
+====== Command: <tt>show </tt>
+get a record
+
+
+====== Command: <tt>update|modify </tt>
+update a record
+
+
+==== Command: <tt>help  command</tt>
+Shows a list of commands or help for one command
+
+Gets help for the application or its commands. Can also list the commands in a way helpful to creating a bash-style completion function
+===== Options
+===== -c
+List commands one per line, to assist with shell completion
+
+
+
+==== Command: <tt>initconfig </tt>
+Initialize the config file using current global options
+
+Initializes a configuration file where you can set default options for command line flags, both globally and on a per-command basis.  These defaults override the built-in defaults and allow you to omit commonly-used command line flags when invoking this program
+===== Options
+===== --[no-]force
+force overwrite of existing config file
+
+
+
+==== Command: <tt>ips </tt>
+Return Cloudflare IPs
+
+
+===== Commands
+====== Command: <tt>list </tt>
+list out cloudflare's IPs
+
+
+[Default Command] list
+==== Command: <tt>zones </tt>
+Use all the non-dns '/zones/*' endpoints
+
+
+===== Commands
+====== Command: <tt>all|list-zones </tt>
+list all zones or filter them
+
+
+[Default Command] false
