@@ -10,7 +10,7 @@ spec = Gem::Specification.new do |s|
   s.homepage = 'https://iotaspencer.me/projects/cloudflare_cli'
   s.platform = Gem::Platform::RUBY
   s.summary = 'A CLI encapsulating /hopefully/ all of cloudflare\'s numerous endpoints (as soon as its fully finished)'
-  s.files = `git ls-files`.split("\x0")
+  s.files = Dir["{lib}/**/*.rb", "bin/*", "LICENSE", "*.md"]
   s.require_paths << 'lib'
   s.bindir = 'bin'
   s.executables << 'cloudflare_cli'
