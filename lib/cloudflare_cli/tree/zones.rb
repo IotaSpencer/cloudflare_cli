@@ -1,9 +1,9 @@
 require "rubyflare"
 
 module CloudflareCli
-  module Endpoints
-    class Zones
-
+  module Nodes
+    module Zone
+      class Zones
       # Return Cloudflare Account Zones
       def self.all(options)
         puts options
@@ -14,6 +14,7 @@ module CloudflareCli
         #  puts e.response.body
         #end
       end
+    end
     end
   end
 end
