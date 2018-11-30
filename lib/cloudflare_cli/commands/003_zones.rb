@@ -1,3 +1,4 @@
+require 'gli'
 module CloudflareCli
   class App
     extend GLI::App
