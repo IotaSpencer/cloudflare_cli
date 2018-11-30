@@ -1,19 +1,24 @@
+require 'gli'
 module CloudflareCli
+  # Cloudflare CLI App class
   class App
     extend GLI::App
 
-    desc "DNS Record Management"
-    command "dns-record" do |c|
-      c.desc "add a record"
-      c.command :add do |dnsadd|
-        dnsadd.action do |global_options, options, args|
+    desc 'DNS Record Management'
+    command 'dns-record' do |c|
+      c.desc 'add a record'
 
+      c.command :add do |dnsadd|
+        dnsadd.flag :type, default_value: 'A', must_match: %w[A AAAA CNAME SOA PTR NS MX LOC SRV SPF TXT CAA CERT DNSKEY DS NAPTR SSHFP TLSA URI SMIMEA], desc: 'Record Type'
+
+        dnsadd.flag :zone, desc: 'DNS Zone ID or Zone Name'
+        dnsadd.action do |global_options, options, args|
           # Your command logic here
 
           # If you have any errors, just raise them
           # raise "that command made no sense"
 
-          puts "dns-record add command ran"
+          puts "dns-record add command ran with #{options}"
         end
       end
 
