@@ -6,3 +6,8 @@ Feature: My bootstrapped app kinda works
   Scenario: App just runs
     When I get help for "cloudflare_cli"
     Then the exit status should be 0
+  Scenario: All Help runs
+    When I get help for "cloudflare_cli zones"
+    Then the exit status should be 0
+    When I get help for "cloudflare_cli dns-record"
+    Then the exit status should be 0
