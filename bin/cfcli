@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+##########
+# File: cloudflare_cli/bin/cfcli
+# Project: cloudflare_cli
+# Author: Ken Spencer <me@iotaspencer.me>
+# Copyright (c) 2018 Ken Spencer
+# License: MIT
+# --------
+
+require 'cloudflare_cli'
+
+CloudflareCli::App.run(ARGV)
