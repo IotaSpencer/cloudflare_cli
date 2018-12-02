@@ -19,4 +19,7 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency('aruba')
   s.add_runtime_dependency('gli','2.18.0')
   s.add_runtime_dependency('httparty', '0.16.2')
+  s.add_runtime_dependency('table_print')
+  s.add_runtime_dependency('terminal-table')
+  s.add_runtime_dependency('recursive-open-struct')
 end
