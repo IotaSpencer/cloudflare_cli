@@ -1,13 +1,13 @@
 == cloudflare_cli - Interface with the Cloudflare API!
 
 
-                    cloudflare_cli is an interface into the Cloudflare API,
-usage is rate-limited by Cloudflare itself, not the gem.
+    cloudflare_cli is an interface into the Cloudflare API,
+    usage is rate-limited by Cloudflare itself, not the gem.
 
-See https://api.cloudflare.com/#getting-started-requests for information
-on the API and the linked anchor for rate-limiting specifically.
+    See https://api.cloudflare.com/#getting-started-requests for information
+    on the API and the linked anchor for rate-limiting specifically.
 
-v0.0.3
+v0.0.3-alpha.3
 
 === Global Options
 === --api-key APIKEY
@@ -91,8 +91,8 @@ Use all the non-dns '/zones/*' endpoints
 
 
 ===== Commands
-====== Command: <tt>all|list-zones </tt>
+====== Command: <tt>all|list </tt>
 list all zones or filter them
 
 
-[Default Command] false
+[Default Command] all
