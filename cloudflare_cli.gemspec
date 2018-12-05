@@ -1,5 +1,7 @@
 # Ensure we require the local version and not one we might have installed already
-require File.join([File.dirname(__FILE__),'lib','cloudflare_cli','version.rb'])
+require 'pathname'
+require Pathname.new(__FILE__).dirname.realdirpath.join('lib', 'cloudflare_cli', 'version.rb')
+#=begin
 spec = Gem::Specification.new do |s|
   s.name = 'cloudflare_cli'
   s.version = CloudflareCli::VERSION
@@ -25,3 +27,4 @@ spec = Gem::Specification.new do |s|
   s.add_runtime_dependency('rubyflare')
   s.add_runtime_dependency('recursive-open-struct')
 end
+#=end
