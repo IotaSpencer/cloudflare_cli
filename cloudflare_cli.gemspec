@@ -26,5 +26,7 @@ spec = Gem::Specification.new do |s|
   s.add_runtime_dependency('terminal-table')
   s.add_runtime_dependency('rubyflare')
   s.add_runtime_dependency('recursive-open-struct')
+  s.add_runtime_dependency('chronic')
+  s.add_runtime_dependency('ruby-units')
 end
 #=end

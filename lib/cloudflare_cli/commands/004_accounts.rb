@@ -1,5 +1,5 @@
 require 'gli'
-require 'cloudflare_cli/methods/term_table'
+require 'cloudflare_cli/methods/tables/accounts'
 require 'cloudflare_cli/methods/output_class'
 require 'recursive_open_struct'
 require 'cloudflare_cli/send_nested'
@@ -27,8 +27,9 @@ module CloudflareCli
             puts js.to_json
           end
           if options[:table]
-            table = CloudflareCli::Methods::TermTable.new('Accounts', js)
-            table.make_rows
+            table = CloudflareCli::Methods::Tables::Accounts.new('Accounts', js)
+            table.make_it_so
+            table.beam_me_out
           end
           if options[:output]
             want = CloudflareCli::Methods::Output.new(options[:output], options, js)

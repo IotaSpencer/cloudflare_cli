@@ -1,5 +1,5 @@
 require 'gli'
-require 'cloudflare_cli/methods/term_table'
+require 'cloudflare_cli/methods/tables/zones'
 require 'cloudflare_cli/methods/output_class'
 require 'recursive_open_struct'
 require 'cloudflare_cli/send_nested'
@@ -12,11 +12,11 @@ module CloudflareCli
     command :zones do |c|
       c.desc 'list all zones or filter them'
       c.command [:all, :list] do |lz|
-        lz.example "#{exe_name} zones [list-zones|all]", desc: 'List all zones without filtering them'
-        lz.example "#{exe_name} zones [list-zones|all] --name example.com", desc: 'List by filter'
-        lz.example "#{exe_name} zones [list-zones|all] --status active", desc: 'List active zones'
-        lz.example "#{exe_name} zones [list-zones|all] --order name --direction desc", desc: 'List zones and sort by name in descending order'
-        lz.example "#{exe_name} zones [list-zones|all] --name example.com --output success --output result[0].id", desc: 'list zones and output some fields, for use with scripts'
+        lz.example "#{exe_name} zones [list|all]", desc: 'List all zones without filtering them'
+        lz.example "#{exe_name} zones [list|all] --name example.com", desc: 'List by filter'
+        lz.example "#{exe_name} zones [list|all] --status active", desc: 'List active zones'
+        lz.example "#{exe_name} zones [list|all] --order name --direction desc", desc: 'List zones and sort by name in descending order'
+        lz.example "#{exe_name} zones [list|all] --name example.com --output success --output result[0].id", desc: 'list zones and output some fields, for use with scripts'
         lz.flag [:name], desc: 'Zone name to search for, max length is 253 characters', arg_name: 'NAME'
         lz.flag [:status], desc: 'Status of the zone', must_match: %w[active pending initializing moved deleted deactivated], required: false, arg_name: 'STATUS', default_value: 'active'
         lz.flag :page, desc: 'Page number of paginated results', type: Integer, arg_name: 'PAGE#', default_value: 1
@@ -35,11 +35,12 @@ module CloudflareCli
             puts js.to_json
           end
           if options[:table]
-            table = CloudflareCli::Methods::Zones::TermTable.new('Zones', js)
-            table.make_rows
+            table = CloudflareCli::Methods::Tables::Zones.new('Zones', js)
+            table.make_it_so
+            table.beam_me_out
           end
           if options[:output]
-            want = CloudflareCli::Methods::Zones::Output.new(options[:output], options, js)
+            want = CloudflareCli::Methods::Output.new(options[:output], options, js)
             want.put
           end
         end
