@@ -1,4 +1,3 @@
-require 'cloudflare_cli/methods/date_parser'
 require 'terminal-table'
 require 'recursive_open_struct'
 require 'cloudflare_cli/methods/tables'
@@ -25,11 +24,9 @@ module CloudflareCli
             one_dimension_keys.each do |key|
               if %w[created_on modified_on activated_on].include? key
                 @results[res.name][key] = DateTime.parse(res[key]).strftime('%B %e, %Y, at %H:%M:%S')
-                    #.strftime('%B %e, %Y at %I:%M %p')
               else
                 @results[res.name][key] = res.dig(key)
               end
-
             end
             permissions = res.permissions.group_by { |x| x[/[a-zA-Z]+/] }.values
             perms = []
@@ -64,7 +61,6 @@ module CloudflareCli
               add_rows [name, val]
               add_separator
             end
-
             add_separator
           end
         end
