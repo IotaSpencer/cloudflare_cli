@@ -17,7 +17,6 @@ module CloudflareCli
           @table_title = title
           @table = Terminal::Table.new
           @hash = hsh
-
           @table.title = @table_title
           @table.style = {:border_bottom => false}
         end
