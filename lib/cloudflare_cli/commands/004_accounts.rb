@@ -3,7 +3,6 @@ require 'cloudflare_cli/methods/tables/accounts'
 require 'cloudflare_cli/methods/output_class'
 require 'recursive_open_struct'
 require 'cloudflare_cli/send_nested'
-require 'cloudflare_cli/tree/accounts'
 
 module CloudflareCli
   class App

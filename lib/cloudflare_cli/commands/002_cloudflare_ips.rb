@@ -12,9 +12,9 @@ module CloudflareCli
 
         li.action do |global_options, options, args|
           if options[:pretty]
-            pp CloudflareCli::Endpoints::IPs.list.body
+            pp CloudflareCli::Nodes::IPs.list.body
           else
-            puts CloudflareCli::Endpoints::IPs.list.body
+            puts CloudflareCli::Nodes::IPs.list.body
           end
         end
       end
