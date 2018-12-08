@@ -17,7 +17,6 @@ module CloudflareCli
             self.add_rows ['Settings Hash', "#{res.settings.to_hash}"]
             self.add_separator
           end
-
         end
       end
     end
