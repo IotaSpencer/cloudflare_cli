@@ -6,7 +6,5 @@
 # Copyright (c) 2018 Ken Spencer
 # License: MIT
 # --------
-
 require 'cloudflare_cli'
-
 CloudflareCli::App.run(ARGV)
