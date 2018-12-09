@@ -15,6 +15,5 @@ module CloudflareCli
     end
   end
 end
-
 require "cloudflare_cli/version"
 require "cloudflare_cli/app"

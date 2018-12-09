@@ -1,7 +1,7 @@
 require 'gli'
 require 'json'
 require 'cloudflare_cli/nodes'
-
+require 'cloudflare_cli/exceptions'
 module CloudflareCli
   # Have a class for the GLI space
   class App
@@ -23,14 +23,9 @@ module CloudflareCli
     commands_from 'cloudflare_cli/commands'
     flag [:email], desc: 'Cloudflare E-Mail', default_value: '', arg_name: 'EMAIL', mask: true
     flag ['api-key'], desc: 'Cloudflare API Key', default_value: '', arg_name: 'APIKEY', mask: true
-
     around do |global_options, command, options, arguments, code|
       CloudflareCli::State.initiate(global_options)
       code.call
-    end
-    pre do |global, command, options, args|
-
-      true
     end
   end
 end

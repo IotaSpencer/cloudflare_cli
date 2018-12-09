@@ -11,14 +11,14 @@ module CloudflareCli
         @errors = hsh[:errors]
         @messages = hsh[:messages]
         @result = hsh[:result]
-        @struct = RecursiveOpenStruct.new(hsh[:result], recurse_over_arrays: true)
+        @struct = RecursiveOpenStruct.new(hsh, recurse_over_arrays: true)
       end
 
       # @param [Array] fields fields to output (usually gotten from @fields on initialize)
       # @return [NilClass]
       def get_fields(fields = @fields)
         fields.each do |path|
-          print @struct.send_nested(path)
+          print @struct.send_nested(path, with_indifferent_access: true)
           case @options[:'output-sep']
           when :newline
             print "\n"

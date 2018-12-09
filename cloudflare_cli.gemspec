@@ -18,9 +18,7 @@ spec = Gem::Specification.new do |s|
   s.executables << 'cloudflare_cli'
   s.add_development_dependency('rake')
   s.add_development_dependency('rdoc')
-  s.add_development_dependency('test-unit')
-  s.add_development_dependency('aruba')
-  s.add_development_dependency('rspec-core')
+  s.add_development_dependency('minitest-reporters')
   s.add_runtime_dependency('gli','2.18.0')
   s.add_runtime_dependency('httparty', '0.16.2')
   s.add_runtime_dependency('table_print')
