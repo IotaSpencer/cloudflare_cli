@@ -7,4 +7,4 @@
 # License: MIT
 # --------
 require 'cloudflare_cli'
-CloudflareCli::App.run(ARGV)
+exit CloudflareCli::App.run(ARGV)

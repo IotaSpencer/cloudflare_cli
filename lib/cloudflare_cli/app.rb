@@ -27,5 +27,9 @@ module CloudflareCli
       CloudflareCli::State.initiate(global_options)
       code.call
     end
+    pre do |global_options,command,options, args|
+      options = CloudflareCli::CLI.validate_options(command,options)
+      true
+    end
   end
 end

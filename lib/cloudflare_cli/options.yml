@@ -1,0 +1,8 @@
+app:
+  commands:
+    memberships:
+      table:
+        conflicts_with:
+          - !ruby/symbol json
+          - !ruby/symbol output
+          - !ruby/symbol output-sep

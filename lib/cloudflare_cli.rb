@@ -15,5 +15,9 @@ module CloudflareCli
     end
   end
 end
+class Object
+  alias_method :extend_with, :extend
+end
 require "cloudflare_cli/version"
 require "cloudflare_cli/app"
+require 'cloudflare_cli/cli'

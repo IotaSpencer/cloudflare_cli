@@ -1,6 +1,6 @@
 # Ensure we require the local version and not one we might have installed already
 require 'pathname'
-require Pathname.new(__FILE__).dirname.realdirpath.join('lib', 'cloudflare_cli', 'version.rb')
+require Pathname.new(__FILE__).dirname.realdirpath.join('lib', 'cloudflare_cli', 'version.rb').to_s
 #=begin
 spec = Gem::Specification.new do |s|
   s.name = 'cloudflare_cli'
@@ -19,6 +19,7 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency('rake')
   s.add_development_dependency('rdoc')
   s.add_development_dependency('minitest-reporters')
+  s.add_development_dependency('pry', '~> 0.11.3')
   s.add_runtime_dependency('gli','2.18.0')
   s.add_runtime_dependency('httparty', '0.16.2')
   s.add_runtime_dependency('table_print')

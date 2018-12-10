@@ -6,7 +6,7 @@ require 'cloudflare_cli/send_nested'
 
 module CloudflareCli
   class App
-    extend GLI::App
+    extend_with GLI::App
     desc 'Access /memberships endpoints'
     command :memberships do |c|
       c.desc 'list memberships'
