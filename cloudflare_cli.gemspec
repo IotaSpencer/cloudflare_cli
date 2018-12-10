@@ -16,17 +16,16 @@ spec = Gem::Specification.new do |s|
   s.require_paths << 'lib'
   s.bindir = 'bin'
   s.executables << 'cloudflare_cli'
-  s.add_development_dependency('rake')
-  s.add_development_dependency('rdoc')
-  s.add_development_dependency('minitest-reporters')
+  s.add_development_dependency('rake', '~> 12.3.2')
+  s.add_development_dependency('rdoc', '~> 6.0.4')
+  s.add_development_dependency('minitest-reporters', '1.3.5')
   s.add_development_dependency('pry', '~> 0.11.3')
   s.add_runtime_dependency('gli','2.18.0')
   s.add_runtime_dependency('httparty', '0.16.2')
-  s.add_runtime_dependency('table_print')
-  s.add_runtime_dependency('terminal-table')
-  s.add_runtime_dependency('rubyflare')
-  s.add_runtime_dependency('recursive-open-struct')
-  s.add_runtime_dependency('chronic')
-  s.add_runtime_dependency('ruby-units')
+  s.add_runtime_dependency('table_print', '~> 1.5.6')
+  s.add_runtime_dependency('terminal-table', '~> 1.8.0')
+  s.add_runtime_dependency('rubyflare', '~> 0.2.0')
+  s.add_runtime_dependency('recursive-open-struct', '~> 1.1.0')
+  s.add_runtime_dependency('chronic', '~> 0.10.2')
 end
 #=end
