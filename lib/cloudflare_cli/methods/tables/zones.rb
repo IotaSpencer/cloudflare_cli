@@ -2,7 +2,6 @@ require 'terminal-table'
 require 'recursive_open_struct'
 require 'cloudflare_cli/methods/tables'
 require 'date'
-require 'active_support/time_with_zone'
 
 module CloudflareCli
   module Methods
