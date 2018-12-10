@@ -1,10 +1,15 @@
 language: ruby
 script: echo "Running tests against $(ruby -v) ..."
 bundler_args: --jobs=6 --retry=3 --standalone
-rvm:
-  - 2.3
-  - 2.4.1
-  - 2.5.3
+jobs:
+  include:
+    - stage: Test Ruby Versions
+      script:
+        - bundle exec rake -t
+      rvm:
+        - 2.3
+        - 2.4.1
+        - 2.5.3
 after_success:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
