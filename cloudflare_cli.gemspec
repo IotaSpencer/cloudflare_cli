@@ -21,7 +21,7 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency('minitest-reporters')
   s.add_development_dependency('pry', '~> 0.12.2')
   s.add_runtime_dependency('gli','2.18.0')
-  s.add_runtime_dependency('httparty', '0.16.2')
+  s.add_runtime_dependency('httparty', '= 0.16.3')
   s.add_runtime_dependency('table_print')
   s.add_runtime_dependency('terminal-table')
   s.add_runtime_dependency('rubyflare')
