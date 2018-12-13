@@ -1,8 +1,9 @@
-app:
-  commands:
-    memberships:
-      table:
-        conflicts_with:
-          - !ruby/symbol json
-          - !ruby/symbol output
-          - !ruby/symbol output-sep
+memberships:
+  list:
+    conflicts:
+      - !ruby/symbol json
+      - !ruby/symbol output
+      - !ruby/symbol table
+    depends:
+      - given: !ruby/symbol output-sep
+        missing: !ruby/symbol output

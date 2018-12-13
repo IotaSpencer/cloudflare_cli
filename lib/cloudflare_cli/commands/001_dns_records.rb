@@ -31,7 +31,7 @@ module CloudflareCli
       end
 
       c.desc 'get a record'
-      c.command [:show] do |dnsshow|
+      c.command [:show, :get] do |dnsshow|
         dnsshow.action do |global_options, options, args|
           puts 'dns-record show ran'
         end

@@ -27,5 +27,7 @@ spec = Gem::Specification.new do |s|
   s.add_runtime_dependency('rubyflare', '~> 0.2.0')
   s.add_runtime_dependency('recursive-open-struct', '~> 1.1.0')
   s.add_runtime_dependency('chronic', '~> 0.10.2')
+  s.add_runtime_dependency('hash_walker')
+  s.add_runtime_dependency('vine')
 end
 #=end

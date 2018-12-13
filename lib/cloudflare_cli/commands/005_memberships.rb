@@ -3,10 +3,12 @@ require 'cloudflare_cli/methods/tables/memberships'
 require 'cloudflare_cli/methods/output_class'
 require 'recursive_open_struct'
 require 'cloudflare_cli/send_nested'
+require 'pry'
+require 'cloudflare_cli/nodes/memberships'
 
 module CloudflareCli
   class App
-    extend_with GLI::App
+    extend GLI::App
     desc 'Access /memberships endpoints'
     command :memberships do |c|
       c.desc 'list memberships'
@@ -20,7 +22,8 @@ module CloudflareCli
         lm.flag :order, desc: 'field to order memberships by', must_match: %w[id account name status]
         lm.flag [:direction, :dir], desc: 'direction to order results', must_match: %w[asc desc], default_value: 'asc'
         lm.action do |global_options, options, args|
-          js = CloudflareCli::Nodes::Memberships.new(options).all.body
+          send_options = options.clone
+          js = CloudflareCli::Nodes::Memberships.new(send_options).all.body
           if options[:json] and options[:table] and options[:output].empty?
             puts js.to_json
           elsif options[:table] and not options[:json] and options[:output].empty?
@@ -31,12 +34,6 @@ module CloudflareCli
             want = CloudflareCli::Methods::Output.new(options[:output], options, js)
             want.put
           else
-            if options[:json] and options[:table]
-              raise FlagSwitchConflictError.new('json', 'table')
-            end
-            if options[:output].empty? and options[:'output-sep']
-              raise FlagSwitchDependencyError.new('option-sep', 'output')
-            end
           end
         end
       end
