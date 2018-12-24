@@ -1,6 +1,8 @@
 language: ruby
 bundler_args: --jobs=6 --retry=3 --standalone
 script:
+  - mkdir $HOME/everygit
+  - git clone https://github.com/IotaSpencer/cloud_party $HOME/everygit/cloud_party
   - echo "Running tests against $(ruby -v) ..."
   - bundle exec rake -t
 rvm:
