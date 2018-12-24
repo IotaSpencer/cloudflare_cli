@@ -20,14 +20,21 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency('rdoc', '~> 6.0.4')
   s.add_development_dependency('minitest-reporters', '1.3.5')
   s.add_development_dependency('pry', '~> 0.11.3')
+  s.add_development_dependency 'pry-rescue'
+  s.add_development_dependency 'pry-state'
+  s.add_development_dependency 'pry-tree'
+  s.add_development_dependency 'orb'
+
+  s.add_runtime_dependency('app_configuration')
+  s.add_runtime_dependency('awesome_print')
+  s.add_runtime_dependency('chronic', '~> 0.10.2')
   s.add_runtime_dependency('gli','2.18.0')
   s.add_runtime_dependency('httparty', '0.16.2')
+  s.add_runtime_dependency('paint')
+  s.add_runtime_dependency('recursive-open-struct', '~> 1.1.0')
+  s.add_runtime_dependency('rubyflare', '~> 0.2.0')
   s.add_runtime_dependency('table_print', '~> 1.5.6')
   s.add_runtime_dependency('terminal-table', '~> 1.8.0')
-  s.add_runtime_dependency('rubyflare', '~> 0.2.0')
-  s.add_runtime_dependency('recursive-open-struct', '~> 1.1.0')
-  s.add_runtime_dependency('chronic', '~> 0.10.2')
-  s.add_runtime_dependency('hash_walker')
   s.add_runtime_dependency('vine')
 end
 #=end

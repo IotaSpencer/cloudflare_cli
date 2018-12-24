@@ -1,15 +1,22 @@
-require "rubyflare"
-
+require 'rubyflare'
+require 'cloudflare_cli/node'
 module CloudflareCli
   module Nodes
     # Accounts API Node /accounts
     class Accounts
-      def self.all(options)
+      include CloudflareCli::Node
+      def initialize(options)
+        super(options)
+      end
+      def self.all
         ctx = CloudflareCli::State.ctx
-        ctx.get('accounts', options)
+        @response = ctx.get('accounts', options)
       rescue Rubyflare::ConnectionError => e
         puts e.response.body
-        raise
+        raise CloudflareCli::APIError.new(self.name.downcase!,e.response.body, -1)
+      end
+      def response
+        @response
       end
     end
   end

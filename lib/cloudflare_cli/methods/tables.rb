@@ -9,12 +9,12 @@ module CloudflareCli
       # @param [String] title Table title
       # @param [Hash] hsh Initialize a TermTable instance
       def initialize(title, hsh)
-        @struct = RecursiveOpenStruct.new(hsh, recurse_over_arrays: true)
-        @success = @struct.success
-        @errors = @struct.errors
-        @messages = @struct.messages
-        @result = @struct.result
-        @paging = @struct.result_info
+        hsh = RecursiveOpenStruct.new(hsh, recurse_over_arrays: true)
+        @success = hsh.dig :success
+        @errors = hsh.dig :errors
+        @messages = hsh.dig :messages
+        @result = hsh.dig :result
+        @paging = hsh.dig :result_info
         @table_title = title
         @table = Terminal::Table.new
         @hash = hsh

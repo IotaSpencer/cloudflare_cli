@@ -21,7 +21,9 @@ module CloudflareCli
       end
       conflicting_options = @@struct.access(arg_path+'.'+'conflicts')
       conflicted = new_options.find_all do |k,v|
-        conflicting_options.include? k.to_sym
+        unless @@struct.vine(arg_path + '.args').nil?
+          conflicting_options.include? k.to_sym
+        end
       end
       conflicted_options = conflicted.to_h.select {|k,v| conflicted.to_h[k] }.keys
       conflicted_count = conflicted.to_h.values.count{|x| x}

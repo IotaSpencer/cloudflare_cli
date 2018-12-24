@@ -1,26 +1,30 @@
-require 'rubyflare'
+require 'cloud_party'
 require 'cloudflare_cli/exceptions'
-require 'cloudflare_cli/nodes/memberships'
+require 'cloudflare_cli/node'
 module CloudflareCli
   module Nodes
-    # Accounts API Node /accounts
+    # Memberships API Node /memberships
     class Memberships
-      include CloudflareCli::Nodes
+      include CloudflareCli::Node
+      #base_uri '/memberships'
       def initialize(options)
-        options.reject!{ |k,v| %w[output output-sep table json].include? k }.reject!{ |k,v| %i[output output-sep table json].include? k }
-        @options = options
+        super(options)
+
       end
-      def all
-        ctx = CloudflareCli::State.ctx
-        response = ctx.get('memberships', @options)
-        unless response.errors.empty?
-          why = response.errors
-          raise CloudflareCli::APIError.new('memberships', why, -1)
+
+      def all(as)
+        case as
+        when :json
+          return CloudParty::Nodes::Memberships.new(@options).list.body
+        when :obj
+          return CloudParty::Nodes::Memberships.new(@options).list.inspect
+        else
+          return CloudParty::Nodes::Memberships.new(@options).list.inspect
         end
-        response
-      rescue Rubyflare::ConnectionError => e
-        raise CloudflareCli::APIError.new('memberships', e.response.body[:errors].each {|x| x.fetch_values(:code, :message)}.join(', '), -1)
       end
     end
   end
 end
+# raise CloudflareCli::APIError.new('memberships',
+# e.response.body[:errors].each {|x| x.fetch_values(:code, :message)}
+# .join(', '), -1)

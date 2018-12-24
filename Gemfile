@@ -1,3 +1,3 @@
 source 'https://rubygems.org'
-# gem 'rubyflare', path: '/home/ken/everygit/rubyflare'
+gem 'cloud_party', path: '/home/ken/everygit/cloud_party/'
 gemspec

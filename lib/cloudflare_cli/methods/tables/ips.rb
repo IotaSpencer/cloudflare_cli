@@ -5,7 +5,7 @@ module CloudflareCli
   module Methods
     module Tables
       # Class to output zone results information onto a table
-      class Zones
+      class IPs
         # @param [String] title Table title
         # @param [Hash] hsh Initialize a TermTable instance
         def initialize(title, hsh)
@@ -18,7 +18,7 @@ module CloudflareCli
           @table = Terminal::Table.new
           @hash = hsh
           @table.title = @table_title
-          @table.style = {:border_bottom => false}
+          @table.style = {border_bottom: false}
         end
 
         # @return [NilClass]

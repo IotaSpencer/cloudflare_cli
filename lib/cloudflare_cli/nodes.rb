@@ -1,11 +1,5 @@
-module CloudflareCli
-  module Nodes
-    def self.included(base)
-
-      base.define_method(:name) do
-        base.name
-      end
-    end
-
-  end
-end
+require 'cloudflare_cli/nodes/memberships'
+require 'cloudflare_cli/nodes/zones'
+require 'cloudflare_cli/nodes/accounts'
+require 'cloudflare_cli/nodes/ips'
+#require 'cloudflare_cli/nodes/dns_records'

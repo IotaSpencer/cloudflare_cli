@@ -7,3 +7,21 @@ memberships:
     depends:
       - given: !ruby/symbol output-sep
         missing: !ruby/symbol output
+accounts:
+  list:
+    conflicts:
+      - !ruby/symbol json
+      - !ruby/symbol output
+      - !ruby/symbol table
+    depends:
+      - given: !ruby/symbol output-sep
+        missing: !ruby/symbol output
+ips:
+  list:
+    conflicts:
+      - !ruby/symbol json
+      - !ruby/symbol output
+      - !ruby/symbol table
+    depends:
+      - given: !ruby/symbol output-sep
+        missing: !ruby/symbol output

@@ -1,6 +1,6 @@
 module CloudflareCli
   module Strings
-    Legal = <<~LEGAL
+    LEGAL = <<~LEGAL
     1. 'cloudflare_cli' - 'the gem' is not owned by, endorsed by, nor sponsored
      or affiliated with Cloudflare, nor does the 'developer' make any claims
      about the use of 'the gem'. All usage and abuse conditons apply to those
