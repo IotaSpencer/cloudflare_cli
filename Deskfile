@@ -1,0 +1,13 @@
+# GLI_DEBUG
+dcli() {
+	GLI_DEBUG=true bundle exec bin/cloudflare_cli $*
+}
+
+# bundle exec cloudflare_cli
+becli() {
+	bundle exec bin/cloudflare_cli $*
+}
+# run rake tasks / tests
+tcli() {
+	bundle exec rake -t
+}
