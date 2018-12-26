@@ -28,6 +28,7 @@ spec = Gem::Specification.new do |s|
   s.add_runtime_dependency('app_configuration')
   s.add_runtime_dependency('awesome_print')
   s.add_runtime_dependency('chronic', '~> 0.10.2')
+  s.add_runtime_dependency('cloud_party')
   s.add_runtime_dependency('gli','2.18.0')
   s.add_runtime_dependency('httparty', '0.16.2')
   s.add_runtime_dependency('paint')

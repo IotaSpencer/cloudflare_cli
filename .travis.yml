@@ -1,8 +1,6 @@
 language: ruby
 bundler_args: --jobs=6 --retry=3 --standalone
-before_install:
-  - mkdir $HOME/everygit
-  - git clone https://github.com/IotaSpencer/cloud_party $HOME/everygit/cloud_party
+# before_install:
 script:
   - echo "Running tests against $(ruby -v) ..."
   - bundle exec rake -t
