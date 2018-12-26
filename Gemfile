@@ -1,4 +1,4 @@
 require 'pathname'
 source 'https://rubygems.org'
-gem 'cloud_party', path: Pathname.new(Dir.home).join('everygit', 'cloud_party/')
+# use gem cloud_party as its being developed along side
 gemspec

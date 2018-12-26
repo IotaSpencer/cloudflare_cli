@@ -1,0 +1,6 @@
+accounts:
+  list:
+    success: 'boolean'
+    errors:
+      type: 'array'
+      contents: 'hash'
