@@ -17,7 +17,7 @@ spec = Gem::Specification.new do |s|
   s.bindir = 'bin'
   s.executables << 'cloudflare_cli'
   s.add_development_dependency('rake', '~> 12.3.2')
-  s.add_development_dependency('rdoc', '~> 6.0.4')
+  s.add_development_dependency('rdoc', '~> 6.1.0')
   s.add_development_dependency('minitest-reporters', '1.3.5')
   s.add_development_dependency('pry', '~> 0.11.3')
   s.add_development_dependency 'pry-rescue'
