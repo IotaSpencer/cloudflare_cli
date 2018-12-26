@@ -20,9 +20,6 @@ spec = Gem::Specification.new do |s|
   s.add_development_dependency('rdoc', '~> 6.1.0')
   s.add_development_dependency('minitest-reporters', '1.3.5')
   s.add_development_dependency('pry', '~> 0.11.3')
-  s.add_development_dependency 'pry-rescue'
-  s.add_development_dependency 'pry-state'
-  s.add_development_dependency 'pry-tree'
   s.add_development_dependency 'orb'
 
   s.add_runtime_dependency('app_configuration')
